@@ -1,0 +1,3 @@
+# JavaScript Primer
+
+Chapter placeholder.
