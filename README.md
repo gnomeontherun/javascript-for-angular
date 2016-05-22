@@ -6,6 +6,8 @@ The goal of this book is to teach the fundamentals of modern JavaScript and how 
 
 **This book is still in initial design and planning. Feel free to submit ideas or requests at [GitHub Issues](https://github.com/gnomeontherun/javascript-for-angular/issues).**
 
+![JavaScript for Angular Cover](cover.jpg)
+
 Angular 2 introduces a completely new framework for building web applications, and much of the value rides on recent additions to the JavaScript language. Understanding how the new features of JavaScript work will greatly enhance your ability to write Angular applications. 
 
 The JavaScript specification is known as ECMAScript, which in 2015 began a new journey where the language standardization process began a new release cycle. Essentially, new standards are regularly proposed to the official standards governing body known as TC39, and these proposals are refined over time. There are several stages for a proposal, and it may take months or years. When a proposal reaches stage four it is finally adopted and made part of the official specification.
