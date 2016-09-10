@@ -6,6 +6,7 @@
   * Implied returns
   * Parentheses
   * 
+
 * Always anonymous
 * What about `this`?
 * Things you can do with arrow functions
@@ -39,3 +40,6 @@ var items = [1,2,3,4,5].map(n => n * n);
 I think this simple example belittles the complexity of using arrow functions, but it does demonstrate the ability to write much more terse statements. Let's explore more of the syntax and underlying behaviors.
 
 ## Syntax
+
+
+

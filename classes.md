@@ -4,7 +4,7 @@
 * [Basic syntax](#basic-syntax)
 * [A class as ES5](#a-class-as-es5)
 * [Constructor method](#constructor-method)
-* [`this` and classes](#this-and-classes)
+* `this`[ and classes](#this-and-classes)
 * [Static methods](#static-methods)
 * Extending classes
 * Mixins
@@ -12,9 +12,10 @@
   * Component and Directive Controllers
   * Services
   * Pipes
+
 * Best practices
 * Things to avoid
-* Resources
+* [Resources](#resources)
 
 ## What are classes?
 
@@ -27,24 +28,24 @@ class Calculator {
   constructor() {
     this.clear();
   }
-  
+
   add(a) {
     this.result += a;
   }
-  
+
   clear() {
     this.result = 0;
   }
 }
 ```
 
-This basic class sets up a new object called `Calculator`, adds two methods to its prototype (`add()` and `clear()`), defines a property (`result`), and runs the constructor method when a new instance is initialized.
+This basic class sets up a new object called `Calculator`, adds two methods to its prototype \(`add()` and `clear()`\), defines a property \(`result`\), and runs the constructor method when a new instance is initialized.
 
 When you use a class to create an object, it is fundamentally a function object. You would not use a class to define a new string or number object for instance.
 
-You can define any number of properties and methods (technically just a property that happens to be a function) for a class. These properties can be set during object creation, using a constructor method to initialize the object, or can be modified after creation.
+You can define any number of properties and methods \(technically just a property that happens to be a function\) for a class. These properties can be set during object creation, using a constructor method to initialize the object, or can be modified after creation.
 
-An object created with a class still uses prototypes. A new class will define a new prototype based on the properties and methods declared. Classes can extend another class, which will link the prototype of the class to the parent prototype. 
+An object created with a class still uses prototypes. A new class will define a new prototype based on the properties and methods declared. Classes can extend another class, which will link the prototype of the class to the parent prototype.
 
 Classes in other languages likely have a different use, so it is important to not directly correlate how a class works in a language like Java to classes in JavaScript. There is not typical object-oriented inheritance, as the prototypical model remains in effect.
 
@@ -60,11 +61,11 @@ class Ledger {
     this.balance = balance;
     this.transactions = [];
   }
-  
+
   store(amount) { 
     this.transactions.push(amount);
   }
-  
+
   clear() { 
     this.transactions = [];
   }
@@ -79,7 +80,7 @@ To use a class, we must create an instance using the `new` keyword. The `constru
 
 All methods are declared without the use of the `function` keyword. The name you provide is made available so you can later call them like we did with `myAccount.store(50)`.
 
-We've use the `this` keyword a few times to create or reference class properties. Any properties that are created are publicly available to access, as we did with `myAccount.transactions`. 
+We've use the `this` keyword a few times to create or reference class properties. Any properties that are created are publicly available to access, as we did with `myAccount.transactions`.
 
 > If you have worked with TypeScript you may have declared properties inside of a class as well. That is purely a TypeScript feature and not available in JavaScript directly.
 
@@ -102,17 +103,17 @@ Ledger.prototype.clear = function() {
 }
 ```
 
-In the end, you get the same `Ledger` object. 
+In the end, you get the same `Ledger` object.
 
 ## Constructor method
 
-The constructor is a special method and is optional. However, it cannot be declared more than once. You only need one anyways, right? 
+The constructor is a special method and is optional. However, it cannot be declared more than once. You only need one anyways, right?
 
 Anything that you place inside of the `constructor()` method will run when a new instance is created. Therefore you should use it to do any initialization logic for your object, and can also accept arguments to setup internal state.
 
 This is the best place to declare any properties that your object needs to retain. You can declare them inside of methods as well, but it is best to declare them in the constructor so you can be sure they are initialized before other methods might use them.
 
-All properties stored on `this` are made public and can be directly accessed or modified. 
+All properties stored on `this` are made public and can be directly accessed or modified.
 
 ## `this` and classes
 
@@ -126,7 +127,7 @@ class Ledger {
     this.transactions = transactions;
     this.balance = 0;
   }
-  
+
   calculateBalance () {
     // `this` refers to Ledger
     this.balance = 0;
@@ -138,11 +139,11 @@ class Ledger {
 }
 ```
 
-We can handle this using [arrow functions](arrow_functions.md), or other common methods like `function() {}.bind(this)`. 
+We can handle this using [arrow functions](arrow_functions.md), or other common methods like `function() {}.bind(this)`.
 
 ## Static methods
 
-Static methods are used without instantiating a copy of the class, just like you do with the `Math.round()` or `Date.now()` methods. You declare a method to be static by using the (you guessed it) `static` keyword like so.
+Static methods are used without instantiating a copy of the class, just like you do with the `Math.round()` or `Date.now()` methods. You declare a method to be static by using the \(you guessed it\) `static` keyword like so.
 
 ```js
 class Circle {
@@ -154,7 +155,7 @@ class Circle {
 var circumference = Circle.circumference(4); // 25.132741228718345
 ```
 
-Static methods are called without instantiating the class first. In fact, static methods do not get attached to the prototype of the object, so they are not available when you create a new instance. 
+Static methods are called without instantiating the class first. In fact, static methods do not get attached to the prototype of the object, so they are not available when you create a new instance.
 
 ```js
 var mycircle = new Circle(); // Create a class instance
@@ -165,10 +166,8 @@ This is important, because your static methods cannot access the rest of the obj
 
 If you want to call a static method inside of your class, you call it the same like `Circle.circumference(4)`. Since it is not bound to the prototype, other methods cannot access it either.
 
-
-
-
 ## Resources
 
 * [Classes on MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Classes)
 * [You Don't Know JS - ES6 & Beyond - Classes](https://github.com/getify/You-Dont-Know-JS/blob/master/es6%20&%20beyond/ch3.md#classes)
+
