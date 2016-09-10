@@ -11,16 +11,16 @@ In JavaScript, you can declare a function with any number of parameters. For exa
 So you may have written a snippet of code like the following.
 
 ```
-function divide(a, b, precision) {
+function divideNoDefaults(a, b, precision) {
   if (Number.isNaN(a) || Number.isNaN(b)) {
     throw new Error('Must provide at least two numeric parameters to divide');
   }
   // Check if optional value was passed, and set a default
-  if (Number.isNaN(precision)) {
+  if (!Number.isInteger(precision)) {
     precision = 2;
   }
   // Divide with precision and parse as float
-  return Number.parseFloat((a / b).toFixed(precision));
+  return Number.parseFloat((a / b).toPrecision(precision));
 }
 ```
 
@@ -42,12 +42,12 @@ function sayHi(message = 'Hello World') {
 If we take the same example above we can rewrite it as follows.
 
 ```
-function divide(a, b, precision = 2) {
+function divideWithDefaults(a, b, precision = 2) {
  if (Number.isNaN(a) || Number.isNaN(b)) {
  throw new Error('Must provide at least two numeric parameters to divide');
  }
  // Divide with precision and parse as float
- return Number.parseFloat((a / b).toFixed(precision));
+ return Number.parseFloat((a / b).toPrecision(precision));
 }
 ```
 
@@ -59,9 +59,29 @@ function sendEmail(from = 'me@example.com', to = 'you@example.com') {
 }
 ```
 
-## Use cases
+## Limitations
 
-Default parameters are conceptually simple to understand and put into use, but here are a few 
+Default parameters are unable to do any kind of validation that the value provided is a certain type. If you are assuming that a particular parameter is a particular type, you'll still need to validate it in your function.
+
+Looking at our `divide` method earlier, there is a subtle difference in how the two versions will behave. The default parameter version removes the check to verify that the `precision` value is actually an integer. 
+
+```
+divideNoDefaults(15, 2, 'three')
+> 7.5
+
+divideWithDefaults(15, 2, 'three')
+> Uncaught RangeError: toPrecision() argument must be between 1 and 21(…)
+```
+
+Just because you have a default value doesn't mean an unacceptable value won't be passed, and you'll still want to validate input parameters before use. 
+
+## Best practices
+
+Default parameters are conceptually simple to understand and put into use, but here are a few tips and limits to consider.
+
+* 
+
+
 
 ## Review
 
