@@ -59,7 +59,11 @@ function sendEmail(from = 'me@example.com', to = 'you@example.com') {
 }
 ```
 
-## Limitations
+## Things to know
+
+Before you put defaults into use everywhere, be aware of some of these common pitfalls and best practices.
+
+#### No validation
 
 Default parameters are unable to do any kind of validation that the value provided is a certain type. If you are assuming that a particular parameter is a particular type, you'll still need to validate it in your function.
 
@@ -75,13 +79,35 @@ divideWithDefaults(15, 2, 'three')
 
 Just because you have a default value doesn't mean an unacceptable value won't be passed, and you'll still want to validate input parameters before use. 
 
-## Best practices
+#### Defaults can exist on any parameter
 
-Default parameters are conceptually simple to understand and put into use, but here are a few tips and limits to consider.
+You can declare any parameter to have a default, regardless of the order. Some languages prevent this behavior, but not JavaScript. Take this example.
 
-* 
+```
+function divide(a = 1, b, precision = 2) {
+  console.log(a, b, precision);
+  // ...same function
+}
 
+divide(15, 3);
+// 15, 3, 2
+```
 
+#### Triggering the default value
+
+Since you can declare a default for any parameter, you might want to just accept the default value without having to declare it. If the first parameter has a default but not the second, you can force the default value by calling `undefined` as the first parameter. 
+
+```
+function divide(a = 1, b, precision) {  
+  console.log(a, b, precision);  
+  // ...same function
+}
+
+divide(undefined, 3);
+// 1, 3, undefined
+```
+
+This is essentially doing the same behavior as not providing a parameter at all, allowing the default to carry through. You can see here we removed the default value from `precision` and it will therefore be undefined.
 
 ## Review
 
