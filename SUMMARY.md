@@ -9,8 +9,8 @@
 * [Modules](modules.md)
 * [Module Loading](module_loading.md)
 * [Default Parameters](default_parameters.md)
+* [Destructuring](destructuring.md)
 * [Template Literals](template_literals.md)
 * [Object Literals](object_literals.md)
-* [Destructuring](destructuring.md)
-* [Spread/Rest Operators](spread_rest_operators.md)
+* [Spread\/Rest Operators](spread_rest_operators.md)
 
